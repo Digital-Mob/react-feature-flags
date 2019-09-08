@@ -1,0 +1,31 @@
+{
+  "name": "react-feature-flags",
+  "version": "1.0.0",
+  "description": "React Feature Flags",
+  "repository": "Digital-Mob/react-feature-flags",
+  "author": "Slava Matvienco <slava.matvienco@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "hook",
+    "feature flags"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && rollup -c"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "16.9.2",
+    "rollup": "1.21.0",
+    "rollup-plugin-typescript2": "0.24.0"
+  }
+}

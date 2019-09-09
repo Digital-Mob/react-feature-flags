@@ -10,7 +10,7 @@
 - [Getting Started](#getting-started)
 - [Examples](#examples)
   - [Basic Usage](#basic-usage)
-  - [Hooks Usage](#hooks-usage)
+  - [Using Hooks](#using-hooks)
 - [License](#license)
 
 </p>
@@ -28,62 +28,62 @@ To get it started, add `git+https://github.com/Digital-Mob/react-feature-flags.g
 npm install --save git+https://github.com/Digital-Mob/react-feature-flags.git
 ```
 
-Please note that `react-feature-flags` requires `react@^16.8.0` as a peer dependency.
+Please note that `react-feature-flags` requires `react@^16.3.1` as a peer dependency.
 
 ## Examples
 
 ### Basic Usage
 
 ```jsx
-import { FeatureFlagProvider, FeatureFlagWidget } from 'react-feature-flags';
+import { FeatureFlagsProvider, FeatureFlagsWidget } from 'react-feature-flags';
 
-const FEATURE_FLAG_URL = 'https://localhost:3000/feature-flags';
+const FEATURE_FLAG_URL = 'https://<:host>/feature-flags';
 
 export default function App() {
   return (
-    <FeatureFlagProvider url={FEATURE_FLAG_URL}>
+    <FeatureFlagsProvider url={FEATURE_FLAG_URL}>
       ...
-      <FeatureFlagWidget name="feature-one">
+      <FeatureFlagsWidget flags="feature-one">
+        Shown only if `feature-one` flag is active
         ...
-      </FeatureFlagWidget>
-      <FeatureFlagWidget name="feature-two">
+      </FeatureFlagsWidget>
+      <FeatureFlagsWidget flags={['feature-one', 'feature-two']}>
+        Shown only if at least one provided flag is active
         ...
-      </FeatureFlagWidget>
-    </form>
+      </FeatureFlagsWidget>
+      <FeatureFlagsWidget flags={['feature-one', 'feature-two']} exact>
+        Shown only if all provided flags are active
+        ...
+      </FeatureFlagsWidget>
+    </FeatureFlagsProvider>
   );
 }
 ```
 
-### Hooks Usage
+### Using Hooks
 
 ```jsx
-import { FeatureFlagProvider, useFeatureFlag } from 'react-feature-flags';
+import { FeatureFlagsProvider, FeatureFlagsWidget, useFeatureFlags } from 'react-feature-flags/dist/hooks';
 
-const FEATURE_FLAG_URL = 'https://localhost:3000/feature-flags';
+const FEATURE_FLAG_URL = 'https://<:host>/feature-flags';
 
 const FeatureOne = () => {
-  const featureFlag = useFeatureFlag();
+  const [featureFlags] = useFeatureFlags();
 
-  return featureFlag.has('feature-one') && (
-    <div>...</div>
-  );
-};
-
-const FeatureTwo = () => {
-  const featureFlag = useFeatureFlag();
-
-  return featureFlag.has('feature-two') && (
+  return featureFlags.has('feature-one') && (
     <div>...</div>
   );
 };
 
 export default function App() {
   return (
-    <FeatureFlagProvider url={FEATURE_FLAG_URL}>
+    <FeatureFlagsProvider url={FEATURE_FLAG_URL}>
       ...
       <FeatureOne />
-      <FeatureTwo />
-    </form>
+      <FeatureFlagsWidget flags="feature-two" exact>
+        ...
+      </FeatureFlagsWidget>
+    </FeatureFlagsProvider>
   );
 }
 ```

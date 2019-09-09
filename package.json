@@ -20,12 +20,13 @@
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1"
   },
   "devDependencies": {
     "@types/react": "16.9.2",
     "rollup": "1.21.0",
+    "rollup-plugin-terser": "5.1.1",
     "rollup-plugin-typescript2": "0.24.0",
     "typescript": "3.6.2"
   }

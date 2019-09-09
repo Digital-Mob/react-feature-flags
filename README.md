@@ -22,10 +22,10 @@
 
 ## Getting Started
 
-To get it started, add `git+https://github.com/Digital-Mob/react-feature-flags.git` to your project:
+To get it started, add `git+ssh://git@github.com/Digital-Mob/react-feature-flags.git` to your project:
 
 ```
-npm install --save git+https://github.com/Digital-Mob/react-feature-flags.git
+npm install --save git+ssh://git@github.com/Digital-Mob/react-feature-flags.git
 ```
 
 Please note that `react-feature-flags` requires `react@^16.3.1` as a peer dependency.

@@ -25,9 +25,9 @@
   },
   "devDependencies": {
     "@types/react": "16.9.2",
-    "rollup": "1.21.0",
+    "rollup": "1.21.2",
     "rollup-plugin-terser": "5.1.1",
-    "rollup-plugin-typescript2": "0.24.0",
+    "rollup-plugin-typescript2": "0.24.1",
     "typescript": "3.6.2"
   }
 }
